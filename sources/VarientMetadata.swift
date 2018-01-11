@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct VarientMetadata {
+public struct VarientMetadata: Codable {
     let high: Int
     let medium: Int
     let low: Int
