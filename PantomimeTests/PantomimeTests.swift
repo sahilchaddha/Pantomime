@@ -178,8 +178,10 @@ class PantomimeTests: XCTestCase {
 
     func testSimpleFullParse() {
         let builder = ManifestBuilder()
-        if let url = URL(string: "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8") {
+        //http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+        if let url = URL(string: "http://8lvbo5aruojb5.cloud.elementaltechnologies.com/out/vod/v1/JIT/PACKGXDNPP0010128174/PACKGXDNPP0010128174_m3u8/u/TI.m3u8") {
             let manifest = builder.parse(url)
+            XCTAssertNotNil(manifest.availableVarientMetadata())
             XCTAssertEqual(4, manifest.playlists.count)
         }
     }

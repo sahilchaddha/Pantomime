@@ -10,6 +10,7 @@ open class MediaPlaylist {
 
     open var programId: Int = 0
     open var bandwidth: Int = 0
+    open var resolution: Int = 0
     open var path: String?
     open var version: Int?
     open var targetDuration: Int?
@@ -38,7 +39,7 @@ open class MediaPlaylist {
     open func duration() -> Float {
         var dur: Float = 0.0
         for item in segments {
-            dur = dur + item.duration!
+            dur += item.duration!
         }
         return dur
     }

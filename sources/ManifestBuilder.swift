@@ -35,13 +35,14 @@ open class ManifestBuilder {
                     // Ok Do nothing
 
                 } else if line.hasPrefix("#EXT-X-STREAM-INF") {
-                    // #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+                    //#EXT-X-STREAM-INF:BANDWIDTH=275358,RESOLUTION=256x144,CODECS="avc1.64001F,mp4a.40.29",AUDIO="Audio_Group"
                     currentMediaPlaylist = MediaPlaylist()
                     do {
-                        let programIdString = try line.replace("(.*)=(\\d+),(.*)", replacement: "$2")
-                        let bandwidthString = try line.replace("(.*),(.*)=(\\d+)(.*)", replacement: "$3")
+                        let bandwidthString = try line.replace("(.*)=(\\d+),(.*)", replacement: "$2")
+                        let resolutionString = try line.replace("(.*),(.*)=(\\d+)(.*)", replacement: "$3")
                         if let currentMediaPlaylistExist = currentMediaPlaylist {
-                            currentMediaPlaylistExist.programId = Int(programIdString)!
+                            currentMediaPlaylistExist.programId = Int(resolutionString)!
+                            currentMediaPlaylistExist.resolution = Int(resolutionString)!
                             currentMediaPlaylistExist.bandwidth = Int(bandwidthString)!
                         }
                     } catch {

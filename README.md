@@ -2,39 +2,27 @@
 
 Pantomime is a lightweight framework for iOS, OSX and tvOS that can read and parse HTTP Live Streaming manifests.
 
+
+Forked from : thomaschristensen/Pantomime
+
+Additional Features :
+Gives access to Bandwidth Struct with high, medium and low bandwidths bitrate in kbps.
+
+Reason for adding bandwidth :
+Needed bandwidths for each varient in manifest to supply to AVPlayer/AVURLAssetDownloadSession to download/play specific segment
+
 ## Latest build
 
 [![Build Status](https://travis-ci.org/thomaschristensen/Pantomime.svg?branch=master)](https://travis-ci.org/thomaschristensen/Pantomime)
 
 ## Installation
 
-You can use [Carthage](https://github.com/Carthage/Carthage) to install Pantomime by adding that to your Cartfile:
-
-``` 
-github "thomaschristensen/Pantomime"
-```
-
 #### via CocoaPods
 
 To use [CocoaPods](https://cocoapods.org) just add this to your Podfile:
 
 ``` Ruby
-pod 'Pantomime'
-```
-
-#### via Swift Package Manager
-
-To use Pantomime as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
-
-``` Swift
-import PackageDescription
-
-let package = Package(
-    name: "HelloWorld",
-        dependencies: [
-            .Package(url: "https://github.com/thomaschristensen/Pantomime", majorVersion: 0)
-        ]
-    )
+pod 'Pantomime', :git =>'https://github.com/sahilchaddha/Pantomime.git'
 ```
 
 <br/>
@@ -47,8 +35,8 @@ To use the parser just do the following:
 import Pantomime
 
 let builder = ManifestBuilder()
-if let url = NSURL(string: "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8") {
-    let manifest = builder.parse(url)
+if let url = URL(string: "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8") {
+    let manifest = builder.parse(url: url)
 }
 ```
 
@@ -102,7 +90,7 @@ the right URL when given relative paths in the various manifest files.
 let masterManifest = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"
 let mediaManifest = "gear1/prog_index.m3u8"
 
-if let masterManifestURL = NSURL(string: masterManifest) {
+if let masterManifestURL = URL(string: masterManifest) {
     let mediaManifestURL = masterManifestURL.URLByReplacingLastPathComponent(mediaManifest)
     // mediaManifestURL now = http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8
 }
