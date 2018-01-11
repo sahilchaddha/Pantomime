@@ -10,6 +10,7 @@ Gives access to Bandwidth Struct with high, medium and low bandwidths bitrate in
 
 Reason for adding bandwidth :
 Needed bandwidths for each varient in manifest to supply to AVPlayer/AVURLAssetDownloadSession to download/play specific segment
+Checkout VarientMetadata in MasterPlaylist
 
 ## Latest build
 
