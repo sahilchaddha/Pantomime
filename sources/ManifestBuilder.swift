@@ -43,7 +43,7 @@ open class ManifestBuilder {
                         if let currentMediaPlaylistExist = currentMediaPlaylist {
                             currentMediaPlaylistExist.programId = Int(resolutionString)!
                             currentMediaPlaylistExist.resolution = Int(resolutionString)!
-                            currentMediaPlaylistExist.bandwidth = Int(bandwidthString)!
+                            currentMediaPlaylistExist.bandwidth = Double(bandwidthString)!
                         }
                     } catch {
                         print("Failed to parse program-id and bandwidth on master playlist. Line = \(line)")

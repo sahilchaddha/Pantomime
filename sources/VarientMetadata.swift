@@ -9,7 +9,13 @@
 import Foundation
 
 public struct VarientMetadata: Codable {
-    let high: Int
-    let medium: Int
-    let low: Int
+    let high: Double
+    let medium: Double
+    let low: Double
+    
+    public init(high: Double, medium: Double, low: Double) {
+        self.high = high
+        self.medium = medium
+        self.low = low
+    }
 }

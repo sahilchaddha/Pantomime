@@ -9,7 +9,7 @@ open class MediaPlaylist {
     var masterPlaylist: MasterPlaylist?
 
     open var programId: Int = 0
-    open var bandwidth: Int = 0
+    open var bandwidth: Double = 0
     open var resolution: Int = 0
     open var path: String?
     open var version: Int?

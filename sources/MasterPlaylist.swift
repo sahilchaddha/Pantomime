@@ -30,11 +30,11 @@ open class MasterPlaylist {
     }
 
     open func availableVarientMetadata() -> VarientMetadata {
-        var high: Int = 0
-        var medium: Int = 0
-        var low: Int = 0
+        var high: Double = 0
+        var medium: Double = 0
+        var low: Double = 0
 
-        let bandwidths: [Int] = playlists.map { (mediaPlaylist: MediaPlaylist) -> Int in
+        let bandwidths: [Double] = playlists.map { (mediaPlaylist: MediaPlaylist) -> Double in
             return mediaPlaylist.bandwidth
         }
         .sorted { (a, b) -> Bool in
