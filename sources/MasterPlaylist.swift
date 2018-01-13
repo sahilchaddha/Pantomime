@@ -41,19 +41,23 @@ open class MasterPlaylist {
                 availableBandwidths.append(bandwidth)
             }
         }
+        
+        let sortedArray: [Double] = availableBandwidths.sorted { (a, b) -> Bool in
+            a < b
+        }
 
-        if let firstElement = availableBandwidths.first {
+        if let firstElement = sortedArray.first {
             low = firstElement
         }
 
-        if let lastElement = availableBandwidths.last {
+        if let lastElement = sortedArray.last {
             high = lastElement
         }
 
-        let totalBandwidths = availableBandwidths.count
+        let totalBandwidths = sortedArray.count
 
         if totalBandwidths - 2 > 0 {
-            medium = availableBandwidths[totalBandwidths - 2]
+            medium = sortedArray[totalBandwidths - 2]
         }
         return VarientMetadata(high: high, medium: medium, low: low)
     }
