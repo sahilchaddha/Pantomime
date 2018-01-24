@@ -41,8 +41,8 @@ open class ManifestBuilder {
                         let bandwidthString = try line.replace("(.*)=(\\d+),(.*)", replacement: "$2")
                         let resolutionString = try line.replace("(.*),(.*)=(\\d+)(.*)", replacement: "$3")
                         if let currentMediaPlaylistExist = currentMediaPlaylist {
-                            currentMediaPlaylistExist.programId = Int(resolutionString)!
-                            currentMediaPlaylistExist.resolution = Int(resolutionString)!
+                            currentMediaPlaylistExist.programId = Int(resolutionString).or(0)
+                            currentMediaPlaylistExist.resolution = Int(resolutionString).or(0)
                             currentMediaPlaylistExist.bandwidth = Double(bandwidthString)
                         }
                     } catch {
